@@ -91,16 +91,14 @@ export const Select: React.FC<SelectProps> = ({
                 );
               })}
             </select>
-            {error
-              ? (
-                <div className="flex items-center pt-2 pb-4 space-x-1 text-sm text-red-500">
-                  <AlertTriangle className="w-4 h-4" />
-                  <p>
-                    <span className="font-semibold">Error:</span> {error}
-                  </p>
-                </div>
-              )
-              : null}
+            {error ? (
+              <div className="flex items-center pt-2 pb-4 space-x-1 text-sm text-red-500">
+                <AlertTriangle className="w-4 h-4" />
+                <p>
+                  <span className="font-semibold">Error:</span> {error}
+                </p>
+              </div>
+            ) : null}
           </div>
         </div>
       </li>

@@ -25,7 +25,7 @@ export const useTopics = (clusterId: string) => {
     },
     {
       enabled: !!client && !!cluster,
-    },
+    }
   );
   return { topics: data, ...meta };
 };

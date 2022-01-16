@@ -29,11 +29,11 @@ export const useCreateCluster = () => {
       const id = crypto!.randomUUID!();
 
       const encryptionKey = window.localStorage.getItem(
-        LOCALSTORAGE_ENCRYPTION_KEY,
+        LOCALSTORAGE_ENCRYPTION_KEY
       );
       if (!encryptionKey) {
         throw new Error(
-          "No encryption key found in localstorage, please add one at /settings",
+          "No encryption key found in localstorage, please add one at /settings"
         );
       }
       window.localStorage.setItem(`ENCRYPTION_KEY_${id}`, encryptionKey);
@@ -51,7 +51,7 @@ export const useCreateCluster = () => {
       await client.query(
         f.Create(f.Collection("kafka_clusters"), {
           data,
-        }),
+        })
       );
       return {
         id,
@@ -61,7 +61,7 @@ export const useCreateCluster = () => {
       onSuccess: () => {
         queryClient.invalidateQueries(QUERY_KEY_CLUSTERS);
       },
-    },
+    }
   );
 
   return { cluster: data, ...meta };

@@ -26,18 +26,16 @@ export const UserMenu: React.FC = (): JSX.Element => {
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
-        {user?.picture
-          ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              className="w-8 h-8 rounded-full"
-              src={user.picture}
-              width="32"
-              height="32"
-              alt="User"
-            />
-          )
-          : null}
+        {user?.picture ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            className="w-8 h-8 rounded-full"
+            src={user.picture}
+            width="32"
+            height="32"
+            alt="User"
+          />
+        ) : null}
         <div className="flex items-center truncate">
           <span className="ml-2 text-sm font-medium truncate group-hover:text-gray-800">
             {user?.nickname}

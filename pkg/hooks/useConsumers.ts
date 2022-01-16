@@ -25,7 +25,7 @@ export const useConsumers = (clusterId: string) => {
     },
     {
       enabled: !!client && !!cluster,
-    },
+    }
   );
   return { consumers: data ?? [], ...meta };
 };

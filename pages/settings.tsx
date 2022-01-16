@@ -5,7 +5,7 @@ import { NextPage } from "next";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { Field, Form, handleSubmit } from "pkg/form";
+import { Field, Form, handleSubmit } from "components/form";
 import { LOCALSTORAGE_ENCRYPTION_KEY } from "pkg/constants";
 const validation = z.object({
   encryptionKey: z.string().nonempty(),
@@ -17,8 +17,8 @@ const SettingsPage: NextPage = () => {
     mode: "onBlur",
     resolver: zodResolver(validation),
     defaultValues: {
-      encryptionKey: window.localStorage.getItem(LOCALSTORAGE_ENCRYPTION_KEY) ??
-        "",
+      encryptionKey:
+        window.localStorage.getItem(LOCALSTORAGE_ENCRYPTION_KEY) ?? "",
     },
   });
 
@@ -57,11 +57,11 @@ const SettingsPage: NextPage = () => {
                         async (values) => {
                           window.localStorage.setItem(
                             LOCALSTORAGE_ENCRYPTION_KEY,
-                            values.encryptionKey,
+                            values.encryptionKey
                           );
                         },
                         setSubmitting,
-                        setFormError,
+                        setFormError
                       );
                     }}
                   >

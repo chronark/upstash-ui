@@ -64,7 +64,7 @@ export class Producer {
   public async produce<TMessage>(
     topic: string,
     message: TMessage,
-    opts?: ProduceOptions,
+    opts?: ProduceOptions
   ): Promise<ProduceResponse> {
     const request: ProduceRequest = {
       topic,
@@ -86,7 +86,7 @@ export class Producer {
    * Each entry in the response array belongs to the request with the same order in the requests.
    */
   public async produceMany(
-    requests: ProduceRequest[],
+    requests: ProduceRequest[]
   ): Promise<ProduceResponse[]> {
     return await this.client.post<ProduceResponse[]>({
       path: ["produce"],

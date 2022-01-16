@@ -21,15 +21,12 @@ export function Form<FieldValues>({
       <form className={className} onSubmit={onSubmit}>
         {children}
       </form>
-      {formError
-        ? (
-          <div role="alert" className="pt-2 pb-4">
-            <span className="text-sm font-semibold text-red-500">Error:</span>
-            {" "}
-            {formError}
-          </div>
-        )
-        : null}
+      {formError ? (
+        <div role="alert" className="pt-2 pb-4">
+          <span className="text-sm font-semibold text-red-500">Error:</span>{" "}
+          {formError}
+        </div>
+      ) : null}
     </FormProvider>
   );
 }
@@ -38,7 +35,7 @@ export async function handleSubmit<FieldValues>(
   ctx: UseFormReturn<FieldValues>,
   onSubmit: (values: FieldValues) => Promise<void>,
   setSubmitting: React.Dispatch<React.SetStateAction<boolean>>,
-  setFormError: React.Dispatch<React.SetStateAction<string | null>>,
+  setFormError: React.Dispatch<React.SetStateAction<string | null>>
 ): Promise<void> {
   const values = ctx.getValues();
   await ctx.handleSubmit(
@@ -50,6 +47,6 @@ export async function handleSubmit<FieldValues>(
         })
         .finally(() => setSubmitting(false));
     },
-    (err) => console.error(err),
+    (err) => console.error(err)
   )();
 }

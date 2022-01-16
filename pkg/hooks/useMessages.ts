@@ -8,7 +8,7 @@ export const useMessages = (
   clusterId: string,
   topic: string,
   partition: number,
-  offset: number | undefined,
+  offset: number | undefined
 ) => {
   const { client } = useFauna();
   const { cluster } = useCluster(clusterId);
@@ -30,7 +30,7 @@ export const useMessages = (
     },
     {
       enabled: !!client && !!cluster && typeof offset === "number",
-    },
+    }
   );
   return { messages: data ?? [], ...meta };
 };

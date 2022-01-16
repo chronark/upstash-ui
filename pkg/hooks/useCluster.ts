@@ -18,7 +18,7 @@ export const useCluster = (clusterId: string) => {
     async () => {
       const client = newFaunaClient(await getAccessTokenSilently());
       const res = await client.query(
-        f.Get(f.Match(f.Index("kafka_cluster_by_id"), clusterId)),
+        f.Get(f.Match(f.Index("kafka_cluster_by_id"), clusterId))
       );
       const key = window.localStorage.getItem(LOCALSTORAGE_ENCRYPTION_KEY);
       if (!key) {
@@ -35,7 +35,7 @@ export const useCluster = (clusterId: string) => {
         username: dec.decrypt(parsed.data.username),
         password: dec.decrypt(parsed.data.password),
       };
-    },
+    }
   );
   return { cluster: data, ...meta };
 };

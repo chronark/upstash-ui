@@ -53,8 +53,7 @@ export const Sidebar: React.FC<SideparProps> = ({
           open ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden="true"
-      >
-      </div>
+      ></div>
 
       {/* Sidebar */}
       <div

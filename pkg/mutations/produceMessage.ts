@@ -33,7 +33,7 @@ export const useProduceMessage = (topic: string, cluster: Cluster) => {
       onSuccess: () => {
         queryClient.invalidateQueries(["MESSAGES", topic]);
       },
-    },
+    }
   );
 
   return { message: data, ...meta };

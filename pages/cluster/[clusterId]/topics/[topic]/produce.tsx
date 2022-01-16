@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { Navigation } from "components/navigation";
 import { useForm } from "react-hook-form";
-import { Field, Form, handleSubmit } from "pkg/form";
+import { Field, Form, handleSubmit } from "components/form";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { NextPage } from "next";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -86,7 +86,7 @@ const ProducePage: NextPage = () => {
                         name="partition"
                         label="Partition"
                         choices={array(
-                          selectedTopic ? selectedTopic[1] : 0,
+                          selectedTopic ? selectedTopic[1] : 0
                         ).map((p) => p.toString())}
                       />
                       <Field.Input name="key" label="Key" />
@@ -142,7 +142,7 @@ const ProducePage: NextPage = () => {
                                 });
                               },
                               setSubmitting,
-                              setFormError,
+                              setFormError
                             );
                           }}
                         >

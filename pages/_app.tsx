@@ -9,9 +9,8 @@ import { PersistendQueryClient } from "pkg/query-client";
  * Main entry point.
  */
 function MyApp({ Component, pageProps }: AppProps) {
-  const redirectUri = typeof window !== "undefined"
-    ? window.location.origin
-    : "/";
+  const redirectUri =
+    typeof window !== "undefined" ? window.location.origin : "/";
 
   return (
     <Auth0Provider

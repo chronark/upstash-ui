@@ -57,9 +57,13 @@ export const Expanding: React.FC<ExpandingProps> = ({
     shouldUnregister: true,
   });
   useEffect(() => {
-    keys.append({});
-    values.append({});
-  }, []);
+    if (keys.fields.length === 0) {
+      keys.append({});
+    }
+    if (values.fields.length === 0) {
+      values.append({});
+    }
+  }, [keys, values]);
 
   // const error = Array.isArray(errors[name])
   //   ? errors[name].join(", ")

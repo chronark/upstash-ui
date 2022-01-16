@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Navigation } from "components/navigation";
 import { useForm } from "react-hook-form";
-import { Field, Form, handleSubmit } from "pkg/form";
+import { Field, Form, handleSubmit } from "components/form";
 import { useCreateCluster } from "pkg/mutations/createCluster";
 import { NextPage } from "next";
 
@@ -91,7 +91,7 @@ const Cluster: NextPage = () => {
                             await createCluster.mutateAsync(values);
                           },
                           setSubmitting,
-                          setFormError,
+                          setFormError
                         );
                       }}
                     >
