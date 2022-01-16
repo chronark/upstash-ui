@@ -15,13 +15,11 @@ This is a simple ui for kafka hosted on upstash
 
 # Quickstart
 
-1. Log in
-2. Go to
-   [https://upstash-ui.vercel.app/settings](https://upstash-ui.vercel.app/settings)
-   and create an encryption key
-3. Go to
-   [https://upstash-ui.vercel.app/cluster](https://upstash-ui.vercel.app/cluster)
-   and add your clusters
+1. Visit [https://upstash-ui.vercel.app](https://upstash-ui.vercel.app) and log
+   in
+2. Go to [/settings](https://upstash-ui.vercel.app/settings) and create an
+   encryption key
+3. Go to [/cluster](https://upstash-ui.vercel.app/cluster) and add your clusters
 
 # Roadmap
 
