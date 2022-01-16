@@ -9,6 +9,8 @@ This is a simple ui for kafka hosted on upstash
 - Produce new messages
 - Only encrypted data stored. Your connection details are de/encrypted inside
   the browser.
+- Requests to upstash are sent directly from the browser, not proxied by a
+  backend.
 - Secure authentication using [auth0](https://auth0.com)
 - Zero ops, using upstash and this allows you use and observe kafka without
   managing anything.
