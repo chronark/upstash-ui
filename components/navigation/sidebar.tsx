@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { Layers, Settings } from "react-feather";
-import { Activity } from "react-feather";
 import Link from "next/link";
 
 type NavbarLinkProps = {

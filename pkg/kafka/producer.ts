@@ -77,7 +77,7 @@ export class Producer {
       body: request,
     });
 
-    return res[0];
+    return res && res.length > 0 ? res[0]! : ({} as ProduceResponse);
   }
 
   /**

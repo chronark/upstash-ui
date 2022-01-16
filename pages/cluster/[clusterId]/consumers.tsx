@@ -6,14 +6,7 @@ import Link from "next/link";
 import { useCluster } from "pkg/hooks/useCluster";
 import { useRouter } from "next/router";
 import { useConsumers } from "pkg/hooks/useConsumers";
-import { Activity } from "react-feather";
-function array(n: number): number[] {
-  const arr: number[] = [];
-  for (let i = 0; i < n; i++) {
-    arr.push(i);
-  }
-  return arr;
-}
+
 const ClusterPage: NextPage = () => {
   const router = useRouter();
   const clusterId = router.query["clusterId"] as string;
@@ -80,7 +73,7 @@ const ClusterPage: NextPage = () => {
             {/* Post */}
             {consumers.map((consumer) => {
               return (
-                <div className="pt-12">
+                <div key={consumer.name} className="pt-12">
                   <div className="">
                     <h2 className="mb-4 text-xl font-bold leading-snug text-gray-800 xl:leading-7 ">
                       {consumer.name}
@@ -90,7 +83,7 @@ const ClusterPage: NextPage = () => {
                       <ul className="-my-2">
                         {consumer.instances.map((instance) => {
                           return (
-                            <li className="relative my-2 ">
+                            <li key={instance.name} className="relative my-2 ">
                               <div className="flex items-center mb-1">
                                 <div
                                   className="absolute left-0 h-full w-0.5 bg-gray-200 self-start ml-2.5 -translate-x-1/2"
@@ -124,7 +117,7 @@ const ClusterPage: NextPage = () => {
                                         {instance.topics.map(
                                           ({ topic, partitions }) => {
                                             return (
-                                              <tr>
+                                              <tr key={topic}>
                                                 <td className="py-2">
                                                   <div className="text-left">
                                                     {topic}
@@ -134,7 +127,7 @@ const ClusterPage: NextPage = () => {
                                                   <div className="font-medium text-right text-gray-800">
                                                     {partitions.map((p) => {
                                                       return (
-                                                        <Link
+                                                        <Link key={p}
                                                           href={`/cluster/${clusterId}/topics/${topic}/partition/${p}`}
                                                         >
                                                           <a className="text-gray-600 bg-white border-gray-200 rounded-none btn hover:bg-gray-50 first:rounded-l last:rounded-r">

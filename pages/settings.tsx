@@ -38,11 +38,8 @@ const SettingsPage: NextPage = () => {
                     name="encryptionKey"
                     type="text"
                     label="Encryption Key"
-                    description="All sensitive information such as connection details for your
-                     clusters will never leave your browser. They are not stored on
-                     any server in plain text. Instead they will be encrypted using
-                     this encryption key. In case you lose this key you will have
-                     to recreate the clusters."
+                    description="All sensitive information such as connection details or kafka messages will never leave your browser. Only the required connection details are encrypted using this encryption key and then sent to the backend. In case you lose this key you will have
+                     to add the clusters again."
                   />
                 </ul>
               </section>

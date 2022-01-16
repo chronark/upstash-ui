@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Transition } from "@headlessui/react";
 
+
 export const UserMenu: React.FC = (): JSX.Element => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -26,13 +27,16 @@ export const UserMenu: React.FC = (): JSX.Element => {
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
-        <img
-          className="w-8 h-8 rounded-full"
-          src={user?.picture}
-          width="32"
-          height="32"
-          alt="User"
-        />
+        {user?.picture ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            className="w-8 h-8 rounded-full"
+            src={user.picture}
+            width="32"
+            height="32"
+            alt="User"
+          />
+        ) : null}
         <div className="flex items-center truncate">
           <span className="ml-2 text-sm font-medium truncate group-hover:text-gray-800">
             {user?.nickname}
@@ -62,19 +66,19 @@ export const UserMenu: React.FC = (): JSX.Element => {
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200">
             <div className="font-medium text-gray-800">{user?.nickname}</div>
-            <div className="text-xs italic text-gray-500">Administrator</div>
+            {/* <div className="text-xs italic text-gray-500">Administrator</div> */}
           </div>
           <ul>
             <li>
               <Link href="/settings">
-                <a className="flex items-center px-3 py-1 text-sm font-medium text-indigo-500 hover:text-indigo-600">
+                <a className="flex items-center px-3 py-1 text-sm font-medium text-primary-500 hover:text-primary-600">
                   Settings
                 </a>
               </Link>
             </li>
             <li>
               <button
-                className="flex items-center px-3 py-1 text-sm font-medium text-indigo-500 hover:text-indigo-600"
+                className="flex items-center px-3 py-1 text-sm font-medium text-primary-500 hover:text-primary-600"
                 onClick={() => logout()}
               >
                 Sign Out

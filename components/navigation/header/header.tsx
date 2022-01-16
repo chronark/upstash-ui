@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import Link from "next/link";
 import { UserMenu } from "./user";
-import { useCluster } from "pkg/hooks/useCluster";
 
 export type HeaderProps = {
   open: boolean;
@@ -15,7 +14,9 @@ export const Header: React.FC<HeaderProps> = ({
 }): JSX.Element => {
   const router = useRouter();
 
+ 
   const path = router.asPath.split("/");
+  console.log({  path });
   return (
     <header className="sticky top-0 z-30 bg-white border-b border-gray-200">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -43,13 +44,17 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Start */}
               <ul className="flex-wrap hidden text-xs font-medium xl:text-sm lg:inline-flex">
                 {path.map((segment) => {
-                  const href = router.asPath
-                    .split("/")
+                  
+                  const href = path
                     .slice(0, path.findIndex((s) => s === segment) + 1)
-                    .join("/");
+                    .join("/").replace(/\/\//g, "")
+                    console.log({href})
                   return (
-                    <li className="after:content-['/'] last:after:hidden after:text-gray-400 after:px-2 text-gray-500 last:text-primary-500">
-                      <Link href={`/${href}`}>
+                    <li
+                      key={segment}
+                      className="after:content-['/'] last:after:hidden after:text-gray-400 after:px-2 text-gray-500 last:text-primary-500"
+                    >
+                      <Link href={href}>
                         <a className="uppercase hover:text-primary-500">
                           {segment}
                         </a>

@@ -1,4 +1,3 @@
-import { Multiply } from "faunadb";
 import React, { useEffect } from "react";
 import { AlertTriangle } from "react-feather";
 import { useFormContext } from "react-hook-form";
@@ -43,10 +42,8 @@ export const Select: React.FC<SelectProps> = ({
   label,
   description,
   name,
-  type,
   defaultValue,
-  placeholder,
-  autoFocus = false,
+ 
   multiple,
   orientation = "row",
   choices,

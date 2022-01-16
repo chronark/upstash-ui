@@ -26,7 +26,7 @@ export const useCreateCluster = () => {
       if (!userId) {
         throw new Error("Can#t determine userId");
       }
-      const id = crypto!.randomUUID();
+      const id = crypto!.randomUUID!();
 
       const encryptionKey = window.localStorage.getItem(
         LOCALSTORAGE_ENCRYPTION_KEY

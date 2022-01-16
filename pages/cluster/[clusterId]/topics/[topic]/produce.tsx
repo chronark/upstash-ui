@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { z } from "zod";
 import { Navigation } from "components/navigation";
 import { useForm } from "react-hook-form";
@@ -16,7 +16,9 @@ const validation = z.object({
   key: z.string().optional(),
 
   partition: z.string().transform((p) => parseInt(p)),
-  timestamp: z.string().transform((p) => parseInt(p)),
+  timestamp: z
+    .union([z.string(), z.number()])
+    .transform((p) => Math.floor(new Date(p).getTime())),
   headerKeys: z.array(z.object({ value: z.string() })),
   headerValues: z.array(z.object({ value: z.string() })),
 });
@@ -38,13 +40,14 @@ const ProducePage: NextPage = () => {
   const formContext = useForm<z.infer<typeof validation>>({
     mode: "onBlur",
     resolver: zodResolver(validation),
+    defaultValues: {
+      timestamp: Math.floor(new Date().getTime() / 1000),
+    },
   });
 
   const { cluster } = useCluster(clusterId);
 
   const selectedTopic = Object.entries(topics ?? {}).find(([t]) => t === topic);
-
-  const w = formContext.watch("headerKeys");
 
   const produce = useProduceMessage(topic, cluster!);
   return (
@@ -92,7 +95,6 @@ const ProducePage: NextPage = () => {
                         name="timestamp"
                         label="Timestamp"
                         type="number"
-                        defaultValue={Math.floor(Date.now())}
                       />
                     </div>
                     <div>
@@ -132,7 +134,7 @@ const ProducePage: NextPage = () => {
                                 }
                                 await produce.mutateAsync({
                                   topic,
-                                  partition: 0,
+                                  partition: values.partition,
                                   key: values.key,
                                   headers,
                                   timestamp: values.timestamp,

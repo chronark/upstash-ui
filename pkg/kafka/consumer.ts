@@ -257,13 +257,13 @@ export class Consumer {
   public async consume(req: ConsumeRequest): Promise<Message[]> {
     const body: Record<string, unknown> = {};
     if (req.topics.length === 1) {
-      body.topic = req.topics[0];
+      body["topic"] = req.topics[0];
     } else {
-      body.topics = req.topics;
+      body["topics"] = req.topics;
     }
 
     if (typeof req.timeout === "number") {
-      body.timeout = req.timeout;
+      body["timeout"] = req.timeout;
     }
 
     const headers: Record<string, string> = {};

@@ -6,7 +6,6 @@ import { ChevronDown, ChevronUp, Plus } from "react-feather";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMessages } from "pkg/hooks/useMessages";
-import { Modal } from "components/modal/basic";
 function format(raw: string): string {
   try {
     return JSON.stringify(JSON.parse(raw), null, 2);
@@ -29,9 +28,6 @@ const Row: React.FC<RowProps> = ({
   message: { timestamp, key, value, offset, headers },
 }): JSX.Element => {
   const [open, setOpen] = useState(false);
-  if (headers.length === 0) {
-    headers.push({ key: "traceId", value: crypto.randomUUID() });
-  }
 
   return (
     <>
@@ -110,7 +106,7 @@ const Row: React.FC<RowProps> = ({
                             <ul className="mb-4">
                               {headers.map(({ key, value }) => {
                                 return (
-                                  <li className="flex justify-between w-full py-2 text-xs border-b border-gray-200">
+                                  <li key={key} className="flex justify-between w-full py-2 text-xs border-b border-gray-200">
                                     <pre>{key}</pre>
                                     <pre className="font-medium text-gray-800">
                                       {value}
@@ -188,8 +184,8 @@ const ClusterPage: NextPage = () => {
                   No messages found{" "}
                 </h2>
                 <div className="mb-6">
-                  Either you haven't selected an offset in the top right corner
-                  or the offset is too high and this partition hasn't reached it
+                  Either you have not selected an offset in the top right corner
+                  or the offset is too high and this partition has not reached it
                   yet. Try a smaller number.
                 </div>
               </div>

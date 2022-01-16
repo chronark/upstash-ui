@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { AlertTriangle, Minus, Plus } from "react-feather";
+import React, { useEffect } from "react";
+import {  Minus, Plus } from "react-feather";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { string } from "zod";
 
 type TextAlignment = "left" | "center" | "right";
 
@@ -36,8 +35,7 @@ export interface ExpandingProps {
 
 export const Expanding: React.FC<ExpandingProps> = ({
   disabled,
-  label,
-  description,
+  
 
   type,
   placeholder,

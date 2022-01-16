@@ -10,7 +10,7 @@ export const useTopics = (clusterId: string) => {
   const { cluster } = useCluster(clusterId);
 
   const { data, ...meta } = useQuery<GetTopicsResponse, Error>(
-    [clusterId, "TOPICS"],
+    ["CLUSTER", clusterId, "TOPICS"],
     async () => {
       const kafka = new Kafka({
         url: cluster!.url,

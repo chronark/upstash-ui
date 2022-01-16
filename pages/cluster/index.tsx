@@ -2,16 +2,18 @@ import React from "react";
 import { Navigation } from "components/navigation";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { NextPage } from "next";
-import { ArrowRight, Box, Plus } from "react-feather";
+import { ArrowRight, Box, Plus, X } from "react-feather";
 
 import Link from "next/link";
 import { useClusters } from "pkg/hooks/useClusters";
+import { useRemoveCluster } from "pkg/mutations/removeCluster";
 
 const ClustersPage: NextPage = () => {
   const { clusters, error } = useClusters();
   if (error) {
     console.error(error);
   }
+  const removeCluster = useRemoveCluster();
   return (
     <Navigation>
       <div className="w-full px-4 py-8 mx-auto sm:px-6 lg:px-8 max-w-9xl">
@@ -53,6 +55,7 @@ const ClustersPage: NextPage = () => {
                         <div className="font-semibold text-left">URL</div>
                       </th>
                       <th></th>
+                      <th></th>
                     </tr>
                   </thead>
                   {/* Table body */}
@@ -68,6 +71,18 @@ const ClustersPage: NextPage = () => {
                           </td>
                           <td className="p-2 whitespace-nowrap">
                             <div className="text-left">{cluster.url}</div>
+                          </td>
+                          <td className="w-8 p-2 whitespace-nowrap">
+                            <button
+                              className="flex items-center p-2 text-white bg-red-900 rounded hover:bg-red-600"
+                              onClick={async () => {
+                                removeCluster.mutateAsync({
+                                  id: cluster.id,
+                                });
+                              }}
+                            >
+                              <X className="w-4 h-4" />
+                            </button>
                           </td>
                           <td className="w-8 p-2 whitespace-nowrap">
                             <Link href={`/cluster/${cluster.id}/topics`}>

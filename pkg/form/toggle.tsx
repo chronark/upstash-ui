@@ -1,8 +1,6 @@
-import { ExclamationCircleIcon } from "@heroicons/react/outline";
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-
-type TextAlignment = "left" | "center" | "right";
+import { AlertTriangle } from "react-feather";
 
 export interface InputProps {
   disabled?: boolean;
@@ -26,7 +24,7 @@ export interface InputProps {
 }
 
 export const Toggle: React.FC<InputProps> = ({
-  disabled,
+  
   label,
   description,
   name,
@@ -74,7 +72,7 @@ export const Toggle: React.FC<InputProps> = ({
 
       {error ? (
         <div className="flex items-center pt-2 pb-4 space-x-1 text-sm text-error">
-          <ExclamationCircleIcon className="w-4 h-4" />
+          <AlertTriangle className="w-4 h-4" />
           <p>
             <span className="font-semibold">Error:</span> {error}
           </p>

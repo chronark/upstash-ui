@@ -8,7 +8,6 @@ import { PersistendQueryClient } from "pkg/query-client";
 /**
  * Main entry point.
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }: AppProps) {
   const redirectUri =
     typeof window !== "undefined" ? window.location.origin : "/";

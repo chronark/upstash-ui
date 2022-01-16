@@ -2,10 +2,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from "react-query";
 import * as f from "faunadb";
 import { z } from "zod";
-import { useFauna } from "pkg/fauna/provider";
+import { newFaunaClient } from "pkg/fauna/provider";
 import { Encryptor } from "pkg/encryption/aes";
 import { Cluster, clusterValidation } from "pkg/db/types";
-export const QUERY_KEY_CLUSTERS = "CLUSTERS";
+export const QUERY_KEY_CLUSTERS = ["CLUSTER"];
 
 const responseValidation = z.object({
   data: z.array(
@@ -16,11 +16,11 @@ const responseValidation = z.object({
 });
 
 export const useClusters = () => {
-  const { client } = useFauna();
-  const { user } = useAuth0();
+  const { user, getAccessTokenSilently } = useAuth0();
   const { data, ...meta } = useQuery<Cluster[], Error>(
     QUERY_KEY_CLUSTERS,
     async () => {
+      const client = newFaunaClient(await getAccessTokenSilently());
       const res = await client.query(
         f.Map(
           f.Paginate(f.Match(f.Index("kafka_clusters_by_user_id"), user!.sub!)),
@@ -45,7 +45,7 @@ export const useClusters = () => {
       });
     },
     {
-      enabled: !!client && !!user?.sub,
+      enabled: !!user?.sub,
     }
   );
   return { clusters: data, ...meta };

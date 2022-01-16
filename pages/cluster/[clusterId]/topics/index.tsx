@@ -99,7 +99,7 @@ const ClusterPage: NextPage = () => {
                           <div>
                             {array(partitions).map((p) => {
                               return (
-                                <Link
+                                <Link key={p}
                                   href={`/cluster/${clusterId}/topics/${topic}/partition/${p}`}
                                 >
                                   <a className="text-gray-600 bg-white border-gray-200 rounded-none btn hover:bg-gray-50 first:rounded-l last:rounded-r">
