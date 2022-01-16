@@ -1,35 +1,37 @@
-# NextJS Typescript Boilerplate
+# Upstash kafka rest UI
 
-Bootstrap a developer-friendly NextJS app configured with:
+This is a simple ui for kafka hosted on upstash
 
-- [Typescript](https://www.typescriptlang.org/)
-- Linting with [ESLint](https://eslint.org/)
-- Formatting with [Prettier](https://prettier.io/)
-- Linting, typechecking and formatting on by default using
-  [`husky`](https://github.com/typicode/husky) for commit hooks
-- Testing with [Jest](https://jestjs.io/) and
-  [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
+# Features
 
-## Deploy your own
+- Manage multiple clusters
+- Visualize topics, partitions and messages
+- Produce new messages
+- Only encrypted data stored. Your connection details are de/encrypted inside
+  the browser.
+- Secure authentication using [auth0](https://auth0.com)
+- Zero ops, using upstash and this allows you use and observe kafka without
+  managing anything.
 
-Deploy the example using
-[Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+# Quickstart
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest&project-name=with-typescript-eslint-jest&repository-name=with-typescript-eslint-jest)
+1. Log in
+2. Go to
+   [https://upstash-ui.vercel.app/settings](https://upstash-ui.vercel.app/settings)
+   and create an encryption key
+3. Go to
+   [https://upstash-ui.vercel.app/cluster](https://upstash-ui.vercel.app/cluster)
+   and add your clusters
 
-## How to use
+# Roadmap
 
-Execute
-[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
-with [npm](https://docs.npmjs.com/cli/init) or
-[Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+This is ready for myself to use and has almost reached the limits of the upstash
+kafka rest api. There are lots of unpolished edges and the user experience is
+admitedly not great. The thing is that this will probably be obsolete at some
+time when upstash create an official ui, so I would rather spend my time
+building longer lasting things.
 
-```bash
-npx create-next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
-# or
-yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
-```
+# Codebase
 
-Deploy it to the cloud with
-[Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example)
-([Documentation](https://nextjs.org/docs/deployment)).
+The code quality is rather poor, I copied stuff together from older projects to
+procude this proof of concept. But I hope you can find what you are looking for.
