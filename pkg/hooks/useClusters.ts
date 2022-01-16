@@ -6,7 +6,7 @@ import { newFaunaClient } from "pkg/fauna/provider";
 import { Encryptor } from "pkg/encryption/aes";
 import { Cluster, clusterValidation } from "pkg/db/types";
 export const QUERY_KEY_CLUSTERS = ["CLUSTER"];
-
+import { LOCALSTORAGE_ENCRYPTION_KEY } from "pkg/constants";
 const responseValidation = z.object({
   data: z.array(
     z.object({
@@ -30,7 +30,7 @@ export const useClusters = () => {
       const parsed = responseValidation.parse(res);
 
       return parsed.data.map((c) => {
-        const key = window.localStorage.getItem(`ENCRYPTION_KEY_${c.data.id}`);
+        const key = window.localStorage.getItem(LOCALSTORAGE_ENCRYPTION_KEY);
         if (!key) {
           console.error(`Unable to find key in localstorage`);
           throw new Error(`Unable to find key in localstorage`);
