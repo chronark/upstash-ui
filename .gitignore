@@ -1,3 +1,6 @@
 .next
 node_modules
 .vercel
+.env
+.pnpm-debug.log
+tsconfig.tsbuildinfo
