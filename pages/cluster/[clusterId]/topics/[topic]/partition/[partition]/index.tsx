@@ -38,13 +38,15 @@ const Row: React.FC<RowProps> = ({
         <td className="p-2 whitespace-nowrap">{key}</td>
         <td className="p-2 whitespace-nowrap">{offset}</td>
         <td className="p-2 whitespace-nowrap">
-          <span className="p-2 font-mono text-gray-700 bg-gray-100 rounded-sm text-ellipsis">
-            {JSON.stringify(headers).slice(0, 100)}
+          <span className="p-2 font-mono text-gray-700 bg-gray-100 rounded-sm">
+            {JSON.stringify(headers).slice(0, 32)}
+            {JSON.stringify(headers).length > 32 ? "..." : ""}
           </span>
         </td>
         <td className="p-2 whitespace-nowrap">
-          <span className="p-2 font-mono text-gray-700 bg-gray-100 rounded-sm text-ellipsis">
-            {value.slice(0, 100)}
+          <span className="p-2 font-mono text-gray-700 bg-gray-100 rounded-sm">
+            {value.slice(0, 32)}
+            {value.length > 32 ? "..." : ""}
           </span>
         </td>
         <td>
