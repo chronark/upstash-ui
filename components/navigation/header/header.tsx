@@ -14,9 +14,7 @@ export const Header: React.FC<HeaderProps> = ({
 }): JSX.Element => {
   const router = useRouter();
 
- 
   const path = router.asPath.split("/");
-  console.log({  path });
   return (
     <header className="sticky top-0 z-30 bg-white border-b border-gray-200">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -44,11 +42,10 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Start */}
               <ul className="flex-wrap hidden text-xs font-medium xl:text-sm lg:inline-flex">
                 {path.map((segment) => {
-                  
                   const href = path
                     .slice(0, path.findIndex((s) => s === segment) + 1)
-                    .join("/").replace(/\/\//g, "")
-                    console.log({href})
+                    .join("/")
+                    .replace(/\/\//g, "");
                   return (
                     <li
                       key={segment}

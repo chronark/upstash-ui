@@ -21,7 +21,6 @@ export const useConsumers = (clusterId: string) => {
         console.warn(err);
         throw err;
       });
-      console.log({ res });
       return res;
     },
     {
