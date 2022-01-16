@@ -5,6 +5,7 @@ import { newFaunaClient } from "pkg/fauna/provider";
 import { Encryptor } from "pkg/encryption/aes";
 import { Cluster, clusterValidation } from "pkg/db/types";
 import { useAuth0 } from "@auth0/auth0-react";
+import { LOCALSTORAGE_ENCRYPTION_KEY } from "pkg/constants";
 
 const responseValidation = z.object({
   data: clusterValidation,
@@ -19,7 +20,7 @@ export const useCluster = (clusterId: string) => {
       const res = await client.query(
         f.Get(f.Match(f.Index("kafka_cluster_by_id"), clusterId))
       );
-      const key = window.localStorage.getItem(`ENCRYPTION_KEY_${clusterId}`);
+      const key = window.localStorage.getItem(LOCALSTORAGE_ENCRYPTION_KEY);
       if (!key) {
         console.error(`Unable to find key in localstorage`);
         throw new Error(`Unable to find key in localstorage`);
