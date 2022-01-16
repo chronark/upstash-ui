@@ -17,8 +17,8 @@ const SettingsPage: NextPage = () => {
     mode: "onBlur",
     resolver: zodResolver(validation),
     defaultValues: {
-      encryptionKey:
-        window.localStorage.getItem(LOCALSTORAGE_ENCRYPTION_KEY) ?? "",
+      encryptionKey: window.localStorage.getItem(LOCALSTORAGE_ENCRYPTION_KEY) ??
+        "",
     },
   });
 
@@ -57,11 +57,11 @@ const SettingsPage: NextPage = () => {
                         async (values) => {
                           window.localStorage.setItem(
                             LOCALSTORAGE_ENCRYPTION_KEY,
-                            values.encryptionKey
+                            values.encryptionKey,
                           );
                         },
                         setSubmitting,
-                        setFormError
+                        setFormError,
                       );
                     }}
                   >

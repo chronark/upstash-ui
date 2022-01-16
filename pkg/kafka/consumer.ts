@@ -9,21 +9,23 @@ export type TopicPartitionOffset = TopicPartition & {
   offset: number;
 };
 
-export type FetchRequest = {
-  timeout?: number;
-  topicPartitionOffsets?: TopicPartitionOffset[];
-} & (
-  | {
+export type FetchRequest =
+  & {
+    timeout?: number;
+    topicPartitionOffsets?: TopicPartitionOffset[];
+  }
+  & (
+    | {
       topic: string;
       partition: number;
       offset: number;
     }
-  | {
+    | {
       topic?: never;
       partition?: never;
       offset?: never;
     }
-);
+  );
 
 type BaseConsumerRequest = {
   /**
@@ -160,7 +162,7 @@ export class Consumer {
    */
   public async fetch(
     req: FetchRequest,
-    opts: FetchOptions = { parallel: true }
+    opts: FetchOptions = { parallel: true },
   ): Promise<Message[]> {
     let requests = [req];
 
@@ -184,8 +186,8 @@ export class Consumer {
           await this.client.post<Message[]>({
             path: ["fetch"],
             body: r,
-          })
-      )
+          }),
+      ),
     );
 
     return responses.flat();
@@ -346,7 +348,7 @@ export class Consumer {
    *  ```
    */
   public async committed(
-    req: CommittedRequest
+    req: CommittedRequest,
   ): Promise<TopicPartitionOffset[]> {
     return await this.client.post<TopicPartitionOffset[]>({
       path: ["committed", req.consumerGroupId, req.instanceId],

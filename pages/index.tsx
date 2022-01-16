@@ -26,7 +26,7 @@ const IndexPage: NextPage = () => {
                 <div className="flex flex-col gap-8 px-4 text-center">
                   <div>
                     If this is the first time you logged in then please head
-                    over to the {" "}
+                    over to the{"  "}
                     <Link href="/settings">
                       <a className="underline text-primary-600 hover:text-primary-900">
                         settings

@@ -86,7 +86,7 @@ const ProducePage: NextPage = () => {
                         name="partition"
                         label="Partition"
                         choices={array(
-                          selectedTopic ? selectedTopic[1] : 0
+                          selectedTopic ? selectedTopic[1] : 0,
                         ).map((p) => p.toString())}
                       />
                       <Field.Input name="key" label="Key" />
@@ -142,7 +142,7 @@ const ProducePage: NextPage = () => {
                                 });
                               },
                               setSubmitting,
-                              setFormError
+                              setFormError,
                             );
                           }}
                         >

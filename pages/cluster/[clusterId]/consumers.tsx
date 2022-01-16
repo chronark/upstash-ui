@@ -47,7 +47,8 @@ const ClusterPage: NextPage = () => {
               <div
                 className="absolute bottom-0 w-full h-px bg-gray-200"
                 aria-hidden="true"
-              ></div>
+              >
+              </div>
               <ul className="relative flex -mx-4 overflow-x-scroll text-sm font-medium flex-nowrap sm:-mx-6 lg:-mx-8 no-scrollbar">
                 <li className="mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
                   <Link href={`/cluster/${clusterId}/topics`}>
@@ -88,7 +89,8 @@ const ClusterPage: NextPage = () => {
                                 <div
                                   className="absolute left-0 h-full w-0.5 bg-gray-200 self-start ml-2.5 -translate-x-1/2"
                                   aria-hidden="true"
-                                ></div>
+                                >
+                                </div>
 
                                 <h3 className="text-lg font-bold text-gray-800 pl-9">
                                   {instance.name}
@@ -127,7 +129,8 @@ const ClusterPage: NextPage = () => {
                                                   <div className="font-medium text-right text-gray-800">
                                                     {partitions.map((p) => {
                                                       return (
-                                                        <Link key={p}
+                                                        <Link
+                                                          key={p}
                                                           href={`/cluster/${clusterId}/topics/${topic}/partition/${p}`}
                                                         >
                                                           <a className="text-gray-600 bg-white border-gray-200 rounded-none btn hover:bg-gray-50 first:rounded-l last:rounded-r">
@@ -140,7 +143,7 @@ const ClusterPage: NextPage = () => {
                                                 </td>
                                               </tr>
                                             );
-                                          }
+                                          },
                                         )}
                                       </tbody>
                                     </table>

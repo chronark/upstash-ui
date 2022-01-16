@@ -91,7 +91,7 @@ const Cluster: NextPage = () => {
                             await createCluster.mutateAsync(values);
                           },
                           setSubmitting,
-                          setFormError
+                          setFormError,
                         );
                       }}
                     >

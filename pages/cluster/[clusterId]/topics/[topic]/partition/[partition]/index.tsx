@@ -56,65 +56,72 @@ const Row: React.FC<RowProps> = ({
           </button>
         </td>
       </tr>
-      {open ? (
-        <tr>
-          <td colSpan={5}>
-            <div className="flex items-start justify-between w-full gap-8 px-2 py-8 lg:relative lg:flex ">
-              <div className="flex-grow w-2/3">
-                <pre className="p-4 font-mono bg-gray-50">{format(value)}</pre>
-              </div>
+      {open
+        ? (
+          <tr>
+            <td colSpan={5}>
+              <div className="flex items-start justify-between w-full gap-8 px-2 py-8 lg:relative lg:flex ">
+                <div className="flex-grow w-2/3">
+                  <pre className="p-4 font-mono bg-gray-50">
+                    {format(value)}
+                  </pre>
+                </div>
 
-              {/* Sidebar */}
-              <div className="w-1/3">
-                <div className="border-t border-gray-200 lg:sticky lg:top-16 bg-gray-50 lg:overflow-x-hidden lg:overflow-y-auto no-scrollbar lg:shrink-0 lg:border-t-0">
-                  <div className="px-4 py-8 lg:px-8 2xl:px-12">
-                    <div className="max-w-sm mx-auto lg:max-w-none">
-                      <div className="space-y-6">
-                        {/* Order summary */}
-                        <div>
-                          <div className="mb-2 font-semibold text-gray-800">
-                            Message
-                          </div>
-                          <ul className="mb-4">
-                            <li className="flex justify-between w-full py-3 text-sm border-b border-gray-200">
-                              <div>Timestamp</div>
-                              <div className="font-medium text-gray-800">
-                                {new Date(timestamp).toLocaleString()}
-                              </div>
-                            </li>
-                            <li className="flex justify-between w-full py-3 text-sm border-b border-gray-200">
-                              <div>Key</div>
-                              <div className="p-1 font-mono font-medium text-gray-600 bg-gray-100 ">
-                                {key}
-                              </div>
-                            </li>{" "}
-                            <li className="flex justify-between w-full py-3 text-sm border-b border-gray-200">
-                              <div>Offset</div>
-                              <div className="p-1 font-medium text-gray-600 ">
-                                {offset.toString()}
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* Payment Details */}
-                        <div>
-                          <div className="mb-4 font-semibold text-gray-800">
-                            Headers
-                          </div>
-                          <div className="space-y-4">
+                {/* Sidebar */}
+                <div className="w-1/3">
+                  <div className="border-t border-gray-200 lg:sticky lg:top-16 bg-gray-50 lg:overflow-x-hidden lg:overflow-y-auto no-scrollbar lg:shrink-0 lg:border-t-0">
+                    <div className="px-4 py-8 lg:px-8 2xl:px-12">
+                      <div className="max-w-sm mx-auto lg:max-w-none">
+                        <div className="space-y-6">
+                          {/* Order summary */}
+                          <div>
+                            <div className="mb-2 font-semibold text-gray-800">
+                              Message
+                            </div>
                             <ul className="mb-4">
-                              {headers.map(({ key, value }) => {
-                                return (
-                                  <li key={key} className="flex justify-between w-full py-2 text-xs border-b border-gray-200">
-                                    <pre>{key}</pre>
-                                    <pre className="font-medium text-gray-800">
-                                      {value}
-                                    </pre>
-                                  </li>
-                                );
-                              })}
+                              <li className="flex justify-between w-full py-3 text-sm border-b border-gray-200">
+                                <div>Timestamp</div>
+                                <div className="font-medium text-gray-800">
+                                  {new Date(timestamp).toLocaleString()}
+                                </div>
+                              </li>
+                              <li className="flex justify-between w-full py-3 text-sm border-b border-gray-200">
+                                <div>Key</div>
+                                <div className="p-1 font-mono font-medium text-gray-600 bg-gray-100 ">
+                                  {key}
+                                </div>
+                              </li>{" "}
+                              <li className="flex justify-between w-full py-3 text-sm border-b border-gray-200">
+                                <div>Offset</div>
+                                <div className="p-1 font-medium text-gray-600 ">
+                                  {offset.toString()}
+                                </div>
+                              </li>
                             </ul>
+                          </div>
+
+                          {/* Payment Details */}
+                          <div>
+                            <div className="mb-4 font-semibold text-gray-800">
+                              Headers
+                            </div>
+                            <div className="space-y-4">
+                              <ul className="mb-4">
+                                {headers.map(({ key, value }) => {
+                                  return (
+                                    <li
+                                      key={key}
+                                      className="flex justify-between w-full py-2 text-xs border-b border-gray-200"
+                                    >
+                                      <pre>{key}</pre>
+                                      <pre className="font-medium text-gray-800">
+                                        {value}
+                                      </pre>
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -122,10 +129,10 @@ const Row: React.FC<RowProps> = ({
                   </div>
                 </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      ) : null}
+            </td>
+          </tr>
+        )
+        : null}
     </>
   );
 };
@@ -176,57 +183,59 @@ const ClusterPage: NextPage = () => {
           </div>
         </div>
 
-        {messages.length === 0 ? (
-          <div className="border-t border-gray-200">
-            <div className="max-w-2xl m-auto mt-16">
-              <div className="px-4 text-center">
-                <h2 className="mb-2 text-2xl font-bold text-gray-800">
-                  No messages found{" "}
-                </h2>
-                <div className="mb-6">
-                  Either you have not selected an offset in the top right corner
-                  or the offset is too high and this partition has not reached it
-                  yet. Try a smaller number.
+        {messages.length === 0
+          ? (
+            <div className="border-t border-gray-200">
+              <div className="max-w-2xl m-auto mt-16">
+                <div className="px-4 text-center">
+                  <h2 className="mb-2 text-2xl font-bold text-gray-800">
+                    No messages found{" "}
+                  </h2>
+                  <div className="mb-6">
+                    Either you have not selected an offset in the top right
+                    corner or the offset is too high and this partition has not
+                    reached it yet. Try a smaller number.
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="m-auto mt-16">
-            <div className="overflow-x-auto">
-              <table className="w-full table-auto">
-                {/* Table header */}
-                <thead className="text-xs text-gray-400 uppercase rounded-sm bg-gray-50">
-                  <tr>
-                    <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Time</div>
-                    </th>
-                    <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Key</div>
-                    </th>
-                    <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Offset</div>
-                    </th>
-                    <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Headers</div>
-                    </th>
-                    <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Value</div>
-                    </th>
-                    <th></th>
-                  </tr>
-                </thead>
-                {/* Table body */}
-                <tbody className="text-sm divide-y divide-gray-100">
-                  {/* Row */}
-                  {messages.map((message, i) => {
-                    return <Row key={i} message={message} />;
-                  })}
-                </tbody>
-              </table>
+          )
+          : (
+            <div className="m-auto mt-16">
+              <div className="overflow-x-auto">
+                <table className="w-full table-auto">
+                  {/* Table header */}
+                  <thead className="text-xs text-gray-400 uppercase rounded-sm bg-gray-50">
+                    <tr>
+                      <th className="p-2 whitespace-nowrap">
+                        <div className="font-semibold text-left">Time</div>
+                      </th>
+                      <th className="p-2 whitespace-nowrap">
+                        <div className="font-semibold text-left">Key</div>
+                      </th>
+                      <th className="p-2 whitespace-nowrap">
+                        <div className="font-semibold text-left">Offset</div>
+                      </th>
+                      <th className="p-2 whitespace-nowrap">
+                        <div className="font-semibold text-left">Headers</div>
+                      </th>
+                      <th className="p-2 whitespace-nowrap">
+                        <div className="font-semibold text-left">Value</div>
+                      </th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  {/* Table body */}
+                  <tbody className="text-sm divide-y divide-gray-100">
+                    {/* Row */}
+                    {messages.map((message, i) => {
+                      return <Row key={i} message={message} />;
+                    })}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     </Navigation>
   );

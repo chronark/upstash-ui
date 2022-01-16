@@ -11,7 +11,7 @@ const responseValidation = z.object({
   data: z.array(
     z.object({
       data: clusterValidation,
-    })
+    }),
   ),
 });
 
@@ -24,8 +24,8 @@ export const useClusters = () => {
       const res = await client.query(
         f.Map(
           f.Paginate(f.Match(f.Index("kafka_clusters_by_user_id"), user!.sub!)),
-          f.Lambda("X", f.Get(f.Var("X")))
-        )
+          f.Lambda("X", f.Get(f.Var("X"))),
+        ),
       );
       const parsed = responseValidation.parse(res);
 
@@ -46,7 +46,7 @@ export const useClusters = () => {
     },
     {
       enabled: !!user?.sub,
-    }
+    },
   );
   return { clusters: data, ...meta };
 };

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Transition } from "@headlessui/react";
 
-
 export const UserMenu: React.FC = (): JSX.Element => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -27,16 +26,18 @@ export const UserMenu: React.FC = (): JSX.Element => {
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
-        {user?.picture ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            className="w-8 h-8 rounded-full"
-            src={user.picture}
-            width="32"
-            height="32"
-            alt="User"
-          />
-        ) : null}
+        {user?.picture
+          ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              className="w-8 h-8 rounded-full"
+              src={user.picture}
+              width="32"
+              height="32"
+              alt="User"
+            />
+          )
+          : null}
         <div className="flex items-center truncate">
           <span className="ml-2 text-sm font-medium truncate group-hover:text-gray-800">
             {user?.nickname}

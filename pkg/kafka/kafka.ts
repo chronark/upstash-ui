@@ -45,9 +45,11 @@ export class Kafka {
     this.client = new HttpClient({
       baseUrl: config.url,
       headers: {
-        authorization: `Basic ${Buffer.from(
-          `${config.username}:${config.password}`
-        ).toString("base64")}`,
+        authorization: `Basic ${
+          Buffer.from(
+            `${config.username}:${config.password}`,
+          ).toString("base64")
+        }`,
       },
     });
   }

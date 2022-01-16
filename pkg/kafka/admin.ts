@@ -48,7 +48,7 @@ export class Admin {
    */
   public async removeConsumerInstance(
     consumerGroup: string,
-    instanceId: string
+    instanceId: string,
   ): Promise<void> {
     await this.client.post({
       path: ["delete-consumer", consumerGroup, instanceId],

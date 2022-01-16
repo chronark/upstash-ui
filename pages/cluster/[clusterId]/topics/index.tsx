@@ -29,14 +29,16 @@ const ClusterPage: NextPage = () => {
             </h1>
           </div>
 
-          {/* <div className="grid justify-start grid-flow-col gap-2 sm:auto-cols-max sm:justify-end">
+          {
+            /* <div className="grid justify-start grid-flow-col gap-2 sm:auto-cols-max sm:justify-end">
             <Link href="/cluster/new">
               <a className="flex items-center p-2 text-white rounded bg-primary-900 hover:bg-primary-600">
                 <Plus className="w-4 h-4" />
                 <span className="ml-2">Add Cluster</span>
               </a>
             </Link>
-          </div> */}
+          </div> */
+          }
         </div>
         <div className="mt-8 space-y-8">
           <div>
@@ -44,7 +46,8 @@ const ClusterPage: NextPage = () => {
               <div
                 className="absolute bottom-0 w-full h-px bg-gray-200"
                 aria-hidden="true"
-              ></div>
+              >
+              </div>
               <ul className="relative flex -mx-4 overflow-x-scroll text-sm font-medium flex-nowrap sm:-mx-6 lg:-mx-8 no-scrollbar">
                 <li className="mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
                   <Link href={`/cluster/${clusterId}/topics`}>
@@ -99,7 +102,8 @@ const ClusterPage: NextPage = () => {
                           <div>
                             {array(partitions).map((p) => {
                               return (
-                                <Link key={p}
+                                <Link
+                                  key={p}
                                   href={`/cluster/${clusterId}/topics/${topic}/partition/${p}`}
                                 >
                                   <a className="text-gray-600 bg-white border-gray-200 rounded-none btn hover:bg-gray-50 first:rounded-l last:rounded-r">

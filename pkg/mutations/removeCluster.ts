@@ -23,16 +23,16 @@ export const useRemoveCluster = () => {
         f.Delete(
           f.Select(
             "ref",
-            f.Get(f.Match(f.Index("kafka_cluster_by_id"), variables.id))
-          )
-        )
+            f.Get(f.Match(f.Index("kafka_cluster_by_id"), variables.id)),
+          ),
+        ),
       );
     },
     {
       onSuccess: () => {
         queryClient.invalidateQueries(QUERY_KEY_CLUSTERS);
       },
-    }
+    },
   );
 
   return { ...meta };

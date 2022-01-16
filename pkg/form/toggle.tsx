@@ -24,7 +24,6 @@ export interface InputProps {
 }
 
 export const Toggle: React.FC<InputProps> = ({
-  
   label,
   description,
   name,
@@ -70,14 +69,16 @@ export const Toggle: React.FC<InputProps> = ({
         </div>
       </li>
 
-      {error ? (
-        <div className="flex items-center pt-2 pb-4 space-x-1 text-sm text-error">
-          <AlertTriangle className="w-4 h-4" />
-          <p>
-            <span className="font-semibold">Error:</span> {error}
-          </p>
-        </div>
-      ) : null}
+      {error
+        ? (
+          <div className="flex items-center pt-2 pb-4 space-x-1 text-sm text-error">
+            <AlertTriangle className="w-4 h-4" />
+            <p>
+              <span className="font-semibold">Error:</span> {error}
+            </p>
+          </div>
+        )
+        : null}
     </div>
   );
 };
