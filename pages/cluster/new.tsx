@@ -95,7 +95,7 @@ const Cluster: NextPage = () => {
                         );
                       }}
                     >
-                      Create Endpoint
+                      Create Cluster
                     </button>
                   </div>
                 </div>

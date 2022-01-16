@@ -146,7 +146,7 @@ const ProducePage: NextPage = () => {
                             );
                           }}
                         >
-                          Create Endpoint
+                          Produce message
                         </button>
                       </div>
                     </div>
