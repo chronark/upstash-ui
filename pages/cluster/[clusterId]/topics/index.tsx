@@ -19,7 +19,6 @@ const ClusterPage: NextPage = () => {
   const clusterId = router.query["clusterId"] as string;
   const { cluster } = useCluster(clusterId);
   const { topics } = useTopics(clusterId);
-  console.log({ topics });
   return (
     <Navigation>
       <div className="w-full px-4 py-8 mx-auto sm:px-6 lg:px-8 max-w-9xl">
@@ -99,7 +98,6 @@ const ClusterPage: NextPage = () => {
                         <div className="flex flex-wrap -space-x-px">
                           <div>
                             {array(partitions).map((p) => {
-                              console.log("XXX", p);
                               return (
                                 <Link
                                   href={`/cluster/${clusterId}/topics/${topic}/partition/${p}`}

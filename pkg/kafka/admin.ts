@@ -17,7 +17,7 @@ type InstanceAssignments = {
   topics: TopicAssignments[];
 };
 
-type GroupAssignments = {
+export type GroupAssignments = {
   name: string;
   instances: InstanceAssignments[];
 };

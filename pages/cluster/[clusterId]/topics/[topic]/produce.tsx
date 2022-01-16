@@ -45,9 +45,6 @@ const ProducePage: NextPage = () => {
   const selectedTopic = Object.entries(topics ?? {}).find(([t]) => t === topic);
 
   const w = formContext.watch("headerKeys");
-  useEffect(() => {
-    console.log(JSON.stringify(w, null, 2));
-  }, [w]);
 
   const produce = useProduceMessage(topic, cluster!);
   return (

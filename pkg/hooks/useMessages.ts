@@ -26,7 +26,6 @@ export const useMessages = (
         partition,
         offset: offset!,
       });
-      console.log({ res });
       return res.sort((a, b) => b.timestamp - a.timestamp);
     },
     {

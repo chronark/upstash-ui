@@ -46,7 +46,6 @@ export const Sidebar: React.FC<SideparProps> = ({
   open,
   setOpen,
 }): JSX.Element => {
-  console.log({ open });
   return (
     <div>
       {/* Sidebar backdrop (mobile only) */}
